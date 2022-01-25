@@ -6,7 +6,7 @@
 
 <a href="https://github.com/apple/swift-package-manager" alt="HTTPClient on Swift Package Manager" title="HTTPClient on Swift Package Manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" /></a>
 
-<img src="https://img.shields.io/badge/platform-iOS%20%7C%20iPadOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20Linux%20%7C%20Windows-lightgrey" alt="Support Platform for iOS macOS watchOS tvOS Linux Windows" />
+<img src="https://img.shields.io/badge/platform-iOS 13~%20%7C%20macOS 10.15(Catalina)~%20%7C%20watchOS 13~%20%7C%20tvOS 6~%20%7C%20Linux%20%7C%20Windows-lightgrey" alt="Support Platform for iOS macOS watchOS tvOS Linux Windows" />
 
 
 ## Ex. Search Repository

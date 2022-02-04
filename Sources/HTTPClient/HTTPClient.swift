@@ -41,7 +41,7 @@ public struct HTTPClient {
   }
   
   public static func delete(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .trace, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+    return try await request(method: .delete, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
   }
   
   public static func connect(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {

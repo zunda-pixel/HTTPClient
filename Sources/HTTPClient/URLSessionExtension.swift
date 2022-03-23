@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(macOS, deprecated: 12.0, message: "Use the built-in API instead")
 @available(iOS, introduced: 13.0, deprecated: 15.0, message: "Use the built-in API instead")
 extension URLSession {
   func data(from url: URL) async throws -> (Data, URLResponse) {

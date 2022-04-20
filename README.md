@@ -26,7 +26,7 @@ print(String(data: data, encoding: .utf8)!)
 ```
 
 
-## Ex. Create Repositry
+## Ex. Create Repository
 
 ```swift
 import HTTPClient

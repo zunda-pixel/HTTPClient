@@ -17,7 +17,10 @@ public struct HTTPClient {
   
   public static func request(method: HTTPMethod, url: URL, queries: [String: String?] = [:], headers: [String: String] = [:], body: Data? = nil,  timeout: Double = timeout) async throws -> (Data, URLResponse) {
     var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)!
-    urlComponents.queryItems = queries.map { .init(name: $0, value: $1)}
+
+    if !queries.isEmpty {
+      urlComponents.queryItems = queries.map { .init(name: $0, value: $1) }
+    }
     
     var request: URLRequest = .init(url: urlComponents.url!)
     request.httpMethod = method.rawValue

@@ -12,7 +12,7 @@ import HTTPMethod
 import FoundationNetworking
 #endif
 
-public struct HTTPClient {
+extension URLSession {
   public static let timeout: Double = 60.0
   
   public static func request(method: HTTPMethod, url: URL, queries: [String: String?] = [:], headers: [String: String] = [:], body: Data? = nil,  timeout: Double = timeout) async throws -> (Data, URLResponse) {

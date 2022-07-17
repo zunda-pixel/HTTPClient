@@ -10,10 +10,11 @@ import Foundation
 #if os(Linux) || os(Windows)
 import FoundationNetworking
 #endif
+
 @available(macOS, deprecated: 12.0, message: "Use the built-in API instead")
 @available(iOS, introduced: 13.0, deprecated: 15.0, message: "Use the built-in API instead")
 extension URLSession {
-  func data(from url: URL, delegate: URLSessionTaskDelegate? = nil) async throws -> (Data, URLResponse) {
+  func data(from url: URL) async throws -> (Data, URLResponse) {
     try await withCheckedThrowingContinuation { continuation in
       self.dataTask(with: url) { data, response, error in
         if let error = error {
@@ -27,7 +28,7 @@ extension URLSession {
     }
   }
   
-  func data(for request: URLRequest, delegate: URLSessionTaskDelegate? = nil) async throws -> (Data, URLResponse) {
+  func data(for request: URLRequest) async throws -> (Data, URLResponse) {
     try await withCheckedThrowingContinuation { continuation in
       self.dataTask(with: request) { data, response, error in
         if let error = error {

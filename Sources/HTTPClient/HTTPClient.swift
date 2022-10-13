@@ -12,10 +12,8 @@ import HTTPMethod
 import FoundationNetworking
 #endif
 
-extension URLSession {
-  public static let timeout: Double = 60.0
-  
-  public func request(method: HTTPMethod, url: URL, queries: [String: String?] = [:], headers: [String: String] = [:], body: Data? = nil,  timeout: Double = timeout) async throws -> (Data, URLResponse) {
+extension URLRequest {
+  static public func request(method: HTTPMethod, url: URL, queries: [String: String?] = [:], headers: [String: String] = [:], body: Data? = nil) -> Self {
     var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)!
 
     if !queries.isEmpty {
@@ -26,44 +24,43 @@ extension URLSession {
     request.httpMethod = method.rawValue
     request.allHTTPHeaderFields = headers
     request.httpBody = body
-    request.timeoutInterval = timeout
     
-    return try await data(for: request)
+    return request
   }
   
-  public func get(url: URL, body: Data? = nil, headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .get, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func get(url: URL, body: Data? = nil, headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self {
+    return request(method: .get, url: url, queries: queries, headers: headers, body: body)
   }
   
-  public func post(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .post, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func post(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self {
+    return request(method: .post, url: url, queries: queries, headers: headers, body: body)
   }
   
-  public func put(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .put, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func put(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self {
+    return request(method: .put, url: url, queries: queries, headers: headers, body: body)
   }
   
-  public func delete(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .delete, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func delete(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self {
+    return request(method: .delete, url: url, queries: queries, headers: headers, body: body)
   }
   
-  public func connect(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .connect, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func connect(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self {
+    return request(method: .connect, url: url, queries: queries, headers: headers, body: body)
   }
   
-  public func head(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .head, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func head(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self {
+    return request(method: .head, url: url, queries: queries, headers: headers, body: body)
   }
   
-  public func options(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .options, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func options(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self{
+    return request(method: .options, url: url, queries: queries, headers: headers, body: body)
   }
   
-  public func patch(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .patch, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func patch(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self {
+    return request(method: .patch, url: url, queries: queries, headers: headers, body: body)
   }
   
-  public func trace(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:], timeout: Double = timeout) async throws -> (Data, URLResponse) {
-    return try await request(method: .trace, url: url, queries: queries, headers: headers, body: body, timeout: timeout)
+  static public func trace(url: URL, body: Data? = nil , headers: [String: String] = [:], queries: [String: String?] = [:]) -> Self {
+    return request(method: .trace, url: url, queries: queries, headers: headers, body: body)
   }
 }
